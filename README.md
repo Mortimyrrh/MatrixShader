@@ -1,2 +1,2 @@
-# MatrixShader
-Yet another matrix rain git repo - my first time using shaders
+# Matrix Shader
+Yet another matrix rain git repo - this is my first time using shaders
