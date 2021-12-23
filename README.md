@@ -12,7 +12,9 @@ Editor
 https://thebookofshaders.com/edit.php
 
 # Graphics Pipline
-https://learnopengl.com/img/getting-started/pipeline.png
+![stages of the pipeline from https://learnopengl.com/Getting-started/Hello-Triangle](https://learnopengl.com/img/getting-started/pipeline.png)
+
+
 
 
 ### Credit
