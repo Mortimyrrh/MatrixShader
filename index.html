@@ -73,19 +73,18 @@
 					"vColor = color;" +
 					"}";
 
-				var fragCode =
-					"precision mediump float;" +
-					"uniform float time;" +
-					"void main(void) {" +
-					"vec3 color = vec3((sin(time) * 0.5) + 0.5, 1., 1.);" +
-					"gl_FragColor = vec4(color,1.0);" +
-					"}";
+				// var fragCode =
+				// 	"precision mediump float;" +
+				// 	"uniform float time;" +
+				// 	"void main(void) {" +
+				// 	"vec3 color = vec3((sin(time) * 0.5) + 0.5, 1., 1.);" +
+				// 	"gl_FragColor = vec4(color,1.0);" +
+				// 	"}";
 
-				// var file = 'TestColourBlue.frag';
-				// fragCode = file.toString(); // is kinda what i want
-				// console.log(fragCode);
-
-				let fragCode = (await fetch("url")).text();
+				var file = 'TestColourBlue.frag';
+				
+				let fragCode = (await fetch(file)).text();
+				console.log(fragCode);
 
 				var vertShader = gl.createShader(gl.VERTEX_SHADER);
 				gl.shaderSource(vertShader, vertCode);
