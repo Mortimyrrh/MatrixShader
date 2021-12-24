@@ -1,5 +1,5 @@
 # Matrix Shader
-Yet another matrix rain git repo - this is my first time using shaders
+Yet another matrix rain git repo - this is my first time using shaders and webgl
 
 
 # Live Demo
