@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
    <body>
       <canvas width = "570" height = "570" id = "my_Canvas"></canvas>
 
@@ -69,6 +70,9 @@
                 'gl_FragColor = vec4(color,1.0);'+
             '}';
 
+         // var file = 'TestColourBlue.frag';
+         // fragCode = file.toString(); // is kinda what i want
+         // console.log(fragCode);   
 
          var vertShader = gl.createShader(gl.VERTEX_SHADER);
          gl.shaderSource(vertShader, vertCode);
