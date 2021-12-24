@@ -1,11 +1,11 @@
 (async function () {
     /*============= Creating a canvas ======================*/
-    let canvas = document.getElementById("my_Canvas");
+    var canvas = document.getElementById("my_Canvas");
     gl = canvas.getContext("experimental-webgl");
 
     /*========== Defining and storing the geometry ==========*/
 
-    let vertices = [
+    var vertices = [
         -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1,
         -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1,
         -1, -1, 1, 1, -1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, -1, -1,
@@ -13,21 +13,21 @@
         1, 1, 1, 1, -1,
     ];
 
-    let colors = [
+    var colors = [
         5, 3, 7, 5, 3, 7, 5, 3, 7, 5, 3, 7, 1, 1, 3, 1, 1, 3, 1, 1,
         3, 1, 1, 3, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1,
         0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0,
         0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0,
     ];
 
-    let indices = [
+    var indices = [
         0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12,
         13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20,
         22, 23,
     ];
 
     // Create and store data into vertex buffer
-    let vertex_buffer = gl.createBuffer();
+    var vertex_buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
     gl.bufferData(
         gl.ARRAY_BUFFER,
@@ -36,7 +36,7 @@
     );
 
     // Create and store data into color buffer
-    let color_buffer = gl.createBuffer();
+    var color_buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, color_buffer);
     gl.bufferData(
         gl.ARRAY_BUFFER,
@@ -45,7 +45,7 @@
     );
 
     // Create and store data into index buffer
-    let index_buffer = gl.createBuffer();
+    var index_buffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
     gl.bufferData(
         gl.ELEMENT_ARRAY_BUFFER,
@@ -55,19 +55,19 @@
 
     /*=================== SHADERS =================== */
 
-    let vertCode =
+    var vertCode =
         "attribute vec3 position;" +
         "uniform mat4 Pmatrix;" +
         "uniform mat4 Vmatrix;" +
         "uniform mat4 Mmatrix;" +
         "attribute vec3 color;" +
-        "letying vec3 vColor;" +
+        "varying vec3 vColor;" +
         "void main(void) { " +
         "gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);" +
         "vColor = color;" +
         "}";
 
-    let fragCode =
+    var fragCode =
         "precision mediump float;" +
         "uniform float time;" +
         "void main(void) {" +
@@ -75,38 +75,38 @@
         "gl_FragColor = vec4(color,1.0);" +
         "}";
 
-    // let file = 'TestColourBlue.frag';
-    // let res = (await fetch(file)).text();
-    // let fragCode = res.text();
+    // var file = 'TestColourBlue.frag';
+    // var res = (await fetch(file)).text();
+    // var fragCode = res.text();
     
     console.log(fragCode);
 
-    let vertShader = gl.createShader(gl.VERTEX_SHADER);
+    var vertShader = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vertShader, vertCode);
     gl.compileShader(vertShader);
 
-    let fragShader = gl.createShader(gl.FRAGMENT_SHADER);
+    var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
     gl.shaderSource(fragShader, fragCode);
     gl.compileShader(fragShader);
 
-    let shaderprogram = gl.createProgram();
+    var shaderprogram = gl.createProgram();
     gl.attachShader(shaderprogram, vertShader);
     gl.attachShader(shaderprogram, fragShader);
     gl.linkProgram(shaderprogram);
 
     /*======== Associating attributes to vertex shader =====*/
-    let _Pmatrix = gl.getUniformLocation(shaderprogram, "Pmatrix");
-    let _Vmatrix = gl.getUniformLocation(shaderprogram, "Vmatrix");
-    let _Mmatrix = gl.getUniformLocation(shaderprogram, "Mmatrix");
-    let timeULoc = gl.getUniformLocation(shaderprogram, "time");
+    var _Pmatrix = gl.getUniformLocation(shaderprogram, "Pmatrix");
+    var _Vmatrix = gl.getUniformLocation(shaderprogram, "Vmatrix");
+    var _Mmatrix = gl.getUniformLocation(shaderprogram, "Mmatrix");
+    var timeULoc = gl.getUniformLocation(shaderprogram, "time");
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
-    let _position = gl.getAttribLocation(shaderprogram, "position");
+    var _position = gl.getAttribLocation(shaderprogram, "position");
     gl.vertexAttribPointer(_position, 3, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(_position);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, color_buffer);
-    let _color = gl.getAttribLocation(shaderprogram, "color");
+    var _color = gl.getAttribLocation(shaderprogram, "color");
     gl.vertexAttribPointer(_color, 3, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(_color);
     gl.useProgram(shaderprogram);
@@ -115,7 +115,7 @@
 
     function get_projection(angle, a, zMin, zMax) 
     {
-        let ang = Math.tan((angle * 0.5 * Math.PI) / 180);
+        var ang = Math.tan((angle * 0.5 * Math.PI) / 180);
         return [ 0.5 / ang, 0, 0, 0, 0, 
                 (0.5 * a) / ang, 0, 0, 0, 0, 
                 -(zMax + zMin) / (zMax - zMin), -1, 0, 0,
@@ -123,31 +123,31 @@
         ];
     }
 
-    let proj_matrix = get_projection(40, canvas.width / canvas.height, 1, 100);
-    let mo_matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
-    let view_matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+    var proj_matrix = get_projection(40, canvas.width / canvas.height, 1, 100);
+    var mo_matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+    var view_matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
     view_matrix[14] = view_matrix[14] - 3;
 
     /*================= Mouse events ======================*/
 
-    let AMORTIZATION = 0.95;
-    let drag = false;
-    let old_x, old_y;
-    let dX = 0,
+    var AMORTIZATION = 0.95;
+    var drag = false;
+    var old_x, old_y;
+    var dX = 0,
         dY = 0;
 
-    let mouseDown = function (e) {
+    var mouseDown = function (e) {
         drag = true;
         (old_x = e.pageX), (old_y = e.pageY);
         e.preventDefault();
         return false;
     };
 
-    let mouseUp = function (e) {
+    var mouseUp = function (e) {
         drag = false;
     };
 
-    let mouseMove = function (e) {
+    var mouseMove = function (e) {
         if (!drag) return false;
         (dX = ((e.pageX - old_x) * 2 * Math.PI) / canvas.width),
             (dY =
@@ -166,9 +166,9 @@
     /*=========================rotation================*/
 
     function rotateX(m, angle) {
-        let c = Math.cos(angle);
-        let s = Math.sin(angle);
-        let mv1 = m[1],
+        var c = Math.cos(angle);
+        var s = Math.sin(angle);
+        var mv1 = m[1],
             mv5 = m[5],
             mv9 = m[9];
 
@@ -182,9 +182,9 @@
     }
 
     function rotateY(m, angle) {
-        let c = Math.cos(angle);
-        let s = Math.sin(angle);
-        let mv0 = m[0],
+        var c = Math.cos(angle);
+        var s = Math.sin(angle);
+        var mv0 = m[0],
             mv4 = m[4],
             mv8 = m[8];
 
@@ -199,12 +199,12 @@
 
     /*=================== Drawing =================== */
 
-    let THETA = 0,
+    var THETA = 0,
         PHI = 0;
-    let time_old = 0;
+    var time_old = 0;
 
-    let animate = function (time) {
-        let dt = time - time_old;
+    var animate = function (time) {
+        var dt = time - time_old;
 
         if (!drag) {
             (dX *= AMORTIZATION), (dY *= AMORTIZATION);
@@ -230,7 +230,7 @@
             (mo_matrix[14] = 0),
             (mo_matrix[15] = 1);
 
-        let rot_speed = 0; //time;
+        var rot_speed = 0; //time;
         rotateY(mo_matrix, THETA + rot_speed * 0.00084);
         rotateX(mo_matrix, PHI + rot_speed * 0.0012);
 
