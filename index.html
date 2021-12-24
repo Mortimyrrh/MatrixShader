@@ -120,7 +120,7 @@
          var mo_matrix = [ 1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1 ];
          var view_matrix = [ 1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1 ];
 
-         view_matrix[14] = view_matrix[14]-6;
+         view_matrix[14] = view_matrix[14]-3;
 
          /*================= Mouse events ======================*/
 
@@ -213,8 +213,10 @@
             mo_matrix[12] = 0, mo_matrix[13] = 0, mo_matrix[14] = 0,
             mo_matrix[15] = 1;
 
-            rotateY(mo_matrix, THETA + (time * 0.00084));
-            rotateX(mo_matrix, PHI + (time * 0.0012));
+
+            var rot_speed = 0; //time;
+            rotateY(mo_matrix, THETA + (rot_speed * 0.00084));
+            rotateX(mo_matrix, PHI + (rot_speed * 0.0012));
 
             time_old = time; 
             gl.enable(gl.DEPTH_TEST);
