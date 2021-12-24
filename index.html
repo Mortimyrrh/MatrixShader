@@ -55,16 +55,17 @@
             'uniform mat4 Pmatrix;'+
             'uniform mat4 Vmatrix;'+
             'uniform mat4 Mmatrix;'+
-            'attribute vec3 color;'+//the color of the point
+            'attribute vec3 color;'+
             'varying vec3 vColor;'+
-            'void main(void) { '+//pre-built function
+            'void main(void) { '+
                'gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);'+
                'vColor = color;'+
             '}';
 
          var fragCode = 'precision mediump float;'+
+            'uniform float time;'+
             'void main(void) {'+
-               'vec3 color = vec3(0., 1., 1.);'+
+               'vec3 color = vec3((sin(time) * 0.5) + 0.5, 1., 1.);'+
                 'gl_FragColor = vec4(color,1.0);'+
             '}';
 
@@ -86,6 +87,11 @@
          var _Pmatrix = gl.getUniformLocation(shaderprogram, "Pmatrix");
          var _Vmatrix = gl.getUniformLocation(shaderprogram, "Vmatrix");
          var _Mmatrix = gl.getUniformLocation(shaderprogram, "Mmatrix");
+
+         //set time
+         var timeULoc = gl.getUniformLocation(shaderprogram, "time");
+
+
 
          gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
          var _position = gl.getAttribLocation(shaderprogram, "position");
@@ -223,6 +229,7 @@
             gl.uniformMatrix4fv(_Pmatrix, false, proj_matrix);
             gl.uniformMatrix4fv(_Vmatrix, false, view_matrix);
             gl.uniformMatrix4fv(_Mmatrix, false, mo_matrix);
+            gl.uniform1f(timeULoc, (time * 0.005));
 
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
             gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
