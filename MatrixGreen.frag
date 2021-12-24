@@ -1,5 +1,5 @@
 // Author: Mortimer
-// Title: Test Colour Blue
+// Title: Matrix Green
 
 #ifdef GL_ES
 precision mediump float;
