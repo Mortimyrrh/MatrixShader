@@ -75,7 +75,7 @@
     //     "gl_FragColor = vec4(color,1.0);" +
     //     "}";
 
-    var file = 'TestColourBlue.frag';
+    var file = 'MatrixGreen.frag';
     var res = (await fetch(file)).text();
     var fragCode = res.text();
     
