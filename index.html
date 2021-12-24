@@ -63,10 +63,11 @@
             '}';
 
          var fragCode = 'precision mediump float;'+
-            'varying vec3 vColor;'+
             'void main(void) {'+
-               'gl_FragColor = vec4(vColor, 1.);'+
+               'vec3 color = vec3(0., 1., 1.);'+
+                'gl_FragColor = vec4(color,1.0);'+
             '}';
+
 
          var vertShader = gl.createShader(gl.VERTEX_SHADER);
          gl.shaderSource(vertShader, vertCode);
@@ -206,15 +207,15 @@
             mo_matrix[12] = 0, mo_matrix[13] = 0, mo_matrix[14] = 0,
             mo_matrix[15] = 1;
 
-            rotateY(mo_matrix, THETA);
-            rotateX(mo_matrix, PHI);
+            rotateY(mo_matrix, THETA + (time * 0.00084));
+            rotateX(mo_matrix, PHI + (time * 0.0012));
 
             time_old = time; 
             gl.enable(gl.DEPTH_TEST);
 
-            // gl.depthFunc(gl.LEQUAL);
+            //gl.depthFunc(gl.LEQUAL);
 
-            gl.clearColor(0.5, 0.5, 0.5, 0.9);
+            gl.clearColor(0., 0., 0., 0.95);
             gl.clearDepth(1.0);
             gl.viewport(0.0, 0.0, canvas.width, canvas.height);
             gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
