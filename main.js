@@ -67,17 +67,17 @@
         "vColor = color;" +
         "}";
 
-    var fragCode =
-        "precision mediump float;" +
-        "uniform float time;" +
-        "void main(void) {" +
-        "vec3 color = vec3((sin(time) * 0.5) + 0.5, 1., 1.);" +
-        "gl_FragColor = vec4(color,1.0);" +
-        "}";
+    // var fragCode =
+    //     "precision mediump float;" +
+    //     "uniform float time;" +
+    //     "void main(void) {" +
+    //     "vec3 color = vec3((sin(time) * 0.5) + 0.5, 1., 1.);" +
+    //     "gl_FragColor = vec4(color,1.0);" +
+    //     "}";
 
-    // var file = 'TestColourBlue.frag';
-    // var res = (await fetch(file)).text();
-    // var fragCode = res.text();
+    var file = 'TestColourBlue.frag';
+    var res = (await fetch(file)).text();
+    var fragCode = res.text();
     
     console.log(fragCode);
 
@@ -212,23 +212,22 @@
         }
 
         //set model matrix to I4
-
         (mo_matrix[0] = 1),
-            (mo_matrix[1] = 0),
-            (mo_matrix[2] = 0),
-            (mo_matrix[3] = 0),
-            (mo_matrix[4] = 0),
-            (mo_matrix[5] = 1),
-            (mo_matrix[6] = 0),
-            (mo_matrix[7] = 0),
-            (mo_matrix[8] = 0),
-            (mo_matrix[9] = 0),
-            (mo_matrix[10] = 1),
-            (mo_matrix[11] = 0),
-            (mo_matrix[12] = 0),
-            (mo_matrix[13] = 0),
-            (mo_matrix[14] = 0),
-            (mo_matrix[15] = 1);
+        (mo_matrix[1] = 0),
+        (mo_matrix[2] = 0),
+        (mo_matrix[3] = 0),
+        (mo_matrix[4] = 0),
+        (mo_matrix[5] = 1),
+        (mo_matrix[6] = 0),
+        (mo_matrix[7] = 0),
+        (mo_matrix[8] = 0),
+        (mo_matrix[9] = 0),
+        (mo_matrix[10] = 1),
+        (mo_matrix[11] = 0),
+        (mo_matrix[12] = 0),
+        (mo_matrix[13] = 0),
+        (mo_matrix[14] = 0),
+        (mo_matrix[15] = 1);
 
         var rot_speed = 0; //time;
         rotateY(mo_matrix, THETA + rot_speed * 0.00084);
@@ -259,5 +258,7 @@
 
         window.requestAnimationFrame(animate);
     };
+
     animate(0);
+
 })();
