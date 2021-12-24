@@ -77,7 +77,7 @@
 
     var file = 'MatrixGreen.frag';
     var res = (await fetch(file)).text();
-    var fragCode = res.text();
+    var fragCode = res;
     
     console.log(fragCode);
 
