@@ -30,8 +30,8 @@ Tree vector
 http://cliparts.co/tree-silhouette-images
 
 ## Todo
-+ make a basic webgl canvas page.
-- make basic triangle vector/fragment shader
+(Done) - make a basic webgl canvas page.
+(In Progress) - make basic triangle vector/fragment shader
 - make tree vector shader
 - make matrix rain fragment shader
 Stretch goal
