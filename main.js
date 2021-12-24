@@ -119,41 +119,19 @@
 
     /*==================== MATRIX ====================== */
 
-    function get_projection(angle, a, zMin, zMax) {
-        let ang = Math.tan((angle * 0.5 * Math.PI) / 180); //angle*.5
-        return [
-            0.5 / ang,
-            0,
-            0,
-            0,
-            0,
-            (0.5 * a) / ang,
-            0,
-            0,
-            0,
-            0,
-            -(zMax + zMin) / (zMax - zMin),
-            -1,
-            0,
-            0,
-            (-2 * zMax * zMin) / (zMax - zMin),
-            0,
+    function get_projection(angle, a, zMin, zMax) 
+    {
+        let ang = Math.tan((angle * 0.5 * Math.PI) / 180);
+        return [ 0.5 / ang, 0, 0, 0, 0, 
+                (0.5 * a) / ang, 0, 0, 0, 0, 
+                -(zMax + zMin) / (zMax - zMin), -1, 0, 0,
+                (-2 * zMax * zMin) / (zMax - zMin), 0,
         ];
     }
 
-    let proj_matrix = get_projection(
-        40,
-        canvas.width / canvas.height,
-        1,
-        100
-    );
-    let mo_matrix = [
-        1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-    ];
-    let view_matrix = [
-        1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-    ];
-
+    let proj_matrix = get_projection(40, canvas.width / canvas.height, 1, 100);
+    let mo_matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+    let view_matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
     view_matrix[14] = view_matrix[14] - 3;
 
     /*================= Mouse events ======================*/
