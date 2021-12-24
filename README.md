@@ -22,6 +22,9 @@ https://glslsandbox.com/
 GLSL Referance
 https://learnopengl.com/Getting-started/Shaders
 
+Simmilar Work
+https://shahriyarshahrabi.medium.com/shader-studies-matrix-effect-3d2ead3a84c5
+https://www.shadertoy.com/view/ldccW4
 
 
 # Graphics Pipline
