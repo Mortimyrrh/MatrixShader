@@ -23,3 +23,11 @@ https://learnopengl.com/Getting-started/Shaders
 ### Credit
 Tree vector
 http://cliparts.co/tree-silhouette-images
+
+## Todo
+- make a basic webgl canvas page.
+- make basic triangle vector/fragment shader
+- make tree vector shader
+- make matrix rain fragment shader
+Stretch goal
+- get it in to Minecraft take some pics
