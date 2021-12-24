@@ -97,6 +97,8 @@
     gl.linkProgram(shaderprogram);
 
     /*======== Associating attributes to vertex shader =====*/
+    gl.useProgram(shaderprogram);
+
     let _Pmatrix = gl.getUniformLocation(shaderprogram, "Pmatrix");
     let _Vmatrix = gl.getUniformLocation(shaderprogram, "Vmatrix");
     let _Mmatrix = gl.getUniformLocation(shaderprogram, "Mmatrix");
