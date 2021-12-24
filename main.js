@@ -76,9 +76,7 @@
         "}";
 
     // let file = 'TestColourBlue.frag';
-
     // let res = (await fetch(file)).text();
-
     // let fragCode = res.text();
     
     console.log(fragCode);
@@ -97,13 +95,9 @@
     gl.linkProgram(shaderprogram);
 
     /*======== Associating attributes to vertex shader =====*/
-    gl.useProgram(shaderprogram);
-
     let _Pmatrix = gl.getUniformLocation(shaderprogram, "Pmatrix");
     let _Vmatrix = gl.getUniformLocation(shaderprogram, "Vmatrix");
     let _Mmatrix = gl.getUniformLocation(shaderprogram, "Mmatrix");
-
-    //set time
     let timeULoc = gl.getUniformLocation(shaderprogram, "time");
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
