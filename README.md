@@ -22,6 +22,9 @@ https://glslsandbox.com/
 GLSL Referance
 https://learnopengl.com/Getting-started/Shaders
 
+text
+https://learnopengl.com/In-Practice/Text-Rendering
+
 Simmilar Work
 https://shahriyarshahrabi.medium.com/shader-studies-matrix-effect-3d2ead3a84c5
 https://www.shadertoy.com/view/ldccW4
