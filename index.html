@@ -83,10 +83,8 @@
 
 				var file = 'TestColourBlue.frag';
 				
-				let res = (await fetch(file)).text();
+				let fragCode = (await fetch(file)).text();
 
-				let fragCode = res.text();
-				
 				console.log(fragCode);
 
 				var vertShader = gl.createShader(gl.VERTEX_SHADER);
