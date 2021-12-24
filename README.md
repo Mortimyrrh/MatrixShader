@@ -2,6 +2,11 @@
 Yet another matrix rain git repo - this is my first time using shaders
 
 
+# Live Demo
+https://mortimyrrh.github.io/MatrixShader/
+
+
+# Links
 Basic Triangle Tutorial (all boilerplate code is from here)
 https://aralroca.com/blog/first-steps-in-webgl
 
