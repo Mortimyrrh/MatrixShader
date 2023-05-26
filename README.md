@@ -1,6 +1,8 @@
 # Matrix Shader
 Yet another matrix rain git repo - this is my first time using shaders and webgl
 
+The plan is to create a simple GLSL shader that generates clasic matrix rain.
+
 
 # Live Demo
 https://mortimyrrh.github.io/MatrixShader/
